@@ -2,22 +2,28 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  let patternLen = 16
+  let step = 0
+  let bpm = 128
+  let clockSpd = Math.round(((60 * 1000) / bpm) / 4)
+  let playing = true
+
+  const transport = () => {
+    console.log('transport called');
+    if (playing) {
+      setInterval(() => {
+        (step === 1 || step % 4 === 0) ? console.log('bam!') : console.log(step)
+        step < patternLen ? step++ : step = 1
+      }, clockSpd);
+    }
+  }
+
+  transport()
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello!</h1>
     </div>
   );
 }

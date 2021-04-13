@@ -1,0 +1,10 @@
+.step-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.step-def {
+  padding: 24px;
+  background-color: beige;
+  margin: 12px;
+}

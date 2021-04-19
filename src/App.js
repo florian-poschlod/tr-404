@@ -6,20 +6,18 @@ import Track from './components/Track'
 function App() {
 
   let patternLen = 16
-  let bpm = 250
+  let bpm = 160
   let clockSpd = Math.round(((60 * 1000) / bpm) / 4)
   let playing = true
-
-  let [activeStep, setStep] = useState(0);
-
+  let [playPosition, setPlayPosition] = useState(0);
 
   // TODO: Move to higher level
   useEffect(() => {
-    // console.log('use effect called');
+    
     if (playing) {
       const interval = setInterval(() => {
-        // console.log(activeStep);
-        setStep(activeStep < patternLen - 1 ? activeStep += 1 : activeStep = 0);
+        
+        setPlayPosition(playPosition < patternLen - 1 ? playPosition += 1 : playPosition = 0);
       }, clockSpd);
       return () => {
         clearInterval(interval);
@@ -31,7 +29,7 @@ function App() {
     <div className="App">
       <Track
         patternLen={patternLen}
-        activeStep={activeStep}
+        playPosition={playPosition}
       />
     </div>
   );

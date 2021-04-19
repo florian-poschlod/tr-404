@@ -1,27 +1,29 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './Step.css';
 
 
 function Step(props) {
 
-  // console.log('step props active step', props.activeStep);
-  // const [activeStep, setActiveStep] = useState(props.activeStep)
-
-
-  if (props.stepIndex === props.activeStep) {
-    return (
-      <div key={props.stepIndex} className='step-active'>
-      </div>
-    )
+  const changePattern = () => {
+    let pattern = [...props.pattern]
+    pattern[props.stepIndex] = !pattern[props.stepIndex]
+    return pattern
   }
 
-  else {
-    return (
-      <div key={props.stepIndex} className='step-default'>
-        <p>{props.stepIndex + 1}</p>
+  const playing = props.stepIndex === props.playPosition
+
+  return (
+    <div key={props.stepIndex} className={playing ? 'step-playing' : 'step-default'}>
+
+        <button
+        onClick={() => props.setStep(changePattern())}
+        className={props.pattern[props.stepIndex] ? 'active' : 'default'}
+        >
+        {props.stepIndex +1}
+        </button>
+
       </div>
     )
-  }
 }
 
 export default Step;

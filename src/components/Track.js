@@ -4,19 +4,20 @@ import Step from './Step';
 
 function Track(props) {
 
-  // console.log('track active step:', props.activeStep);
-
-  const [pattern, setPattern] = useState(new Array(props.patternLen).fill(0))
-
+  const [pattern, setStep] = useState(new Array(props.patternLen).fill(false))
+  
   const steps = pattern.map((step, index) => {
-    return <Step stepIndex={index} activeStep={props.activeStep} />
+    return <Step
+      stepIndex={index}
+      pattern={pattern}
+      playPosition={props.playPosition}
+      setStep={setStep}
+    />
   })
 
   return (
     <div>
-      <div className='step-row'>
-        {steps}
-      </div>
+      {steps}
     </div>
   )
 }

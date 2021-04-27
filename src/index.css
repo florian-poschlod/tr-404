@@ -7,6 +7,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.container {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    height: 20px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -17,7 +24,7 @@ code {
   --color-background: rgb(255, 255, 255);
 }
 
-button {
+/* button {
     background: none;
     color: inherit;
     border: none;
@@ -25,4 +32,4 @@ button {
     font: inherit;
     cursor: pointer;
     outline: inherit;
-}
+} */
